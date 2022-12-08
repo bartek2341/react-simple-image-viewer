@@ -11,10 +11,12 @@ interface IProps {
   closeComponent?: JSX.Element;
   leftArrowComponent?: JSX.Element;
   rightArrowComponent?: JSX.Element;
+  edges?: any;
 }
 
 const ReactSimpleImageViewer = (props: IProps) => {
   const [currentIndex, setCurrentIndex] = useState(props.currentIndex ?? 0);
+  const edge = props.edges[currentIndex]
 
   const changeImage = useCallback(
     (delta: number) => {
@@ -23,39 +25,39 @@ const ReactSimpleImageViewer = (props: IProps) => {
       setCurrentIndex(nextIndex);
     },
     [currentIndex]
-  );
-
-  const handleClick = useCallback(
-    (event: any) => {
-      if (!event.target || !props.closeOnClickOutside) {
-        return;
-      }
-
-      const checkId = event.target.id === 'ReactSimpleImageViewer';
-      const checkClass = event.target.classList.contains('react-simple-image-viewer__slide');
-
-      if (checkId || checkClass) {
-        event.stopPropagation();
-        props.onClose?.();
-      }
-    },
-    [props.onClose]
-  );
-
-  const handleKeyDown = useCallback(
-    (event: any) => {
-      if (event.key === "Escape") {
-        props.onClose?.();
-      }
-
-      if (["ArrowLeft", "h"].includes(event.key)) {
-        changeImage(-1);
-      }
-
-      if (["ArrowRight", "l"].includes(event.key)) {
-        changeImage(1);
-      }
-    },
+    );
+    
+    const handleClick = useCallback(
+      (event: any) => {
+        if (!event.target || !props.closeOnClickOutside) {
+          return;
+        }
+        
+        const checkId = event.target.id === 'ReactSimpleImageViewer';
+        const checkClass = event.target.classList.contains('react-simple-image-viewer__slide');
+        
+        if (checkId || checkClass) {
+          event.stopPropagation();
+          props.onClose?.();
+        }
+      },
+      [props.onClose]
+      );
+      
+      const handleKeyDown = useCallback(
+        (event: any) => {
+          if (event.key === "Escape") {
+            props.onClose?.();
+          }
+          
+          if (["ArrowLeft", "h"].includes(event.key)) {
+            changeImage(-1);
+          }
+          
+          if (["ArrowRight", "l"].includes(event.key)) {
+            changeImage(1);
+          }
+        },
     [props.onClose, changeImage]
   );
 
@@ -124,7 +126,7 @@ const ReactSimpleImageViewer = (props: IProps) => {
         onClick={handleClick}
       >
         <div className={`${styles.slide} react-simple-image-viewer__slide`}>
-          <img className={styles.image} src={props.src[currentIndex]} alt="" />
+          <img className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()}/>
         </div>
       </div>
     </div>
