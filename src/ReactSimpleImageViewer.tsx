@@ -120,13 +120,11 @@ const ReactSimpleImageViewer = (props: IProps) => {
           { props.rightArrowComponent || "❯" }
         </span>
       )}
-
       <div
         className={`${styles.content} react-simple-image-viewer__modal-content`}
         onClick={handleClick}
       >
         <div className={`${styles.slide} react-simple-image-viewer__slide`}>
-          {edge.is_video && <img className={styles.svg} src={"./play.svg"} alt="play"/>}
           <img className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()}/>
         </div>
       </div>
