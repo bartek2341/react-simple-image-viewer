@@ -126,7 +126,7 @@ const ReactSimpleImageViewer = (props: IProps) => {
         onClick={handleClick}
       >
         <div className={`${styles.slide} react-simple-image-viewer__slide`}>
-          <img className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()}/>
+          <img style={{cursor: "pointer"}} className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()}/>
         </div>
       </div>
     </div>
