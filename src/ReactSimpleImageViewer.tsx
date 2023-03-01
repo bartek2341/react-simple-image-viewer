@@ -127,7 +127,7 @@ const ReactSimpleImageViewer = (props: IProps) => {
         <div className={`${styles.slide} react-simple-image-viewer__slide`}>
           <img className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()} onError={({ currentTarget }) => {
             currentTarget.onerror = null;
-            currentTarget.src = "./alternate.png";
+            currentTarget.src = "./images/alternate.png";
             }}/>
         </div>
       </div>
