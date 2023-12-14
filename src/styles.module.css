@@ -73,6 +73,19 @@
   opacity: 1;
 }
 
+.downloadBtn {
+  cursor: pointer;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  background-color: #ed6292;
+  border-radius: 22px;
+  opacity: 0.7;
+}
+
 @media (hover: none) {
   .navigation:hover {
     opacity: 0.2;
