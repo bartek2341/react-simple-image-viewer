@@ -125,6 +125,9 @@ const ReactSimpleImageViewer = (props: IProps) => {
         onClick={handleClick}
       >
         <div className={`${styles.slide} react-simple-image-viewer__slide`}>
+          <div className="downloadBtn" onClick={() => edge.downloader()}>
+            <img src="./images/download.svg" alt="" />
+          </div>
           <img className={styles.image} src={props.src[currentIndex]} alt="" onClick={() => edge.opener()} onError={({ currentTarget }) => {
             currentTarget.onerror = null;
             currentTarget.src = "./images/alternate.png";
