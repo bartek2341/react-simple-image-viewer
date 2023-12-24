@@ -38,6 +38,7 @@
 }
 
 .close {
+  z-index: 90;
   color: white;
   position: absolute;
   top: 15px;
@@ -53,6 +54,7 @@
 }
 
 .navigation {
+  z-index: 5;
   height: 80%;
   color: white;
   cursor: pointer;
